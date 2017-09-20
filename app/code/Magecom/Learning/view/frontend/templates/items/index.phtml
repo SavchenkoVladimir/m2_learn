@@ -1,0 +1,23 @@
+<?php $items = $this->getAllItems(); ?>
+<h1>Items</h1>
+<table>
+    <tr>
+        <th>id</th>
+        <th>title</th>
+        <th>creation time</th>
+    </tr>
+    <?php foreach($items as $item): ?>
+        <tr>
+            <td><?= $item['item_id'] ?></td>
+            <td><?= $item['title'] ?></td>
+            <td><?= $item['creation_time'] ?></td>
+        </tr>
+    <?php endforeach; ?>
+    <tr>
+        <td>Items count:</td>
+        <td></td>
+        <td><?= $this->getItemsCount() ?></td>
+    </tr>
+</table>
+
+

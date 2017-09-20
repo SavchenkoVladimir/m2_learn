@@ -17,8 +17,7 @@ class InstallSchema implements InstallSchemaInterface
 
         $installer->startSetup();
 
-        $table = $installer->getConnection()->newTable(
-            $installer->getTable('learning_items')
+        $table = $installer->getConnection()->newTable($installer->getTable('learning_items')
         )->addColumn(
             'item_id',
             \Magento\Framework\DB\Ddl\Table::TYPE_INTEGER,
@@ -54,11 +53,10 @@ class InstallSchema implements InstallSchemaInterface
             \Magento\Framework\DB\Ddl\Table::TYPE_TIMESTAMP,
             null,
             ['nullable' => false, 'default' => \Magento\Framework\DB\Ddl\Table::TIMESTAMP_INIT_UPDATE],
-            'Updated time'
+            'Update time'
         );
+
         $installer->getConnection()->createTable($table);
-
         $installer->endSetup();
-
     }
 }

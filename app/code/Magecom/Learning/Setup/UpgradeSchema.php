@@ -11,15 +11,19 @@ class UpgradeSchema implements UpgradeSchemaInterface
     public function upgrade(SchemaSetupInterface $setup, ModuleContextInterface $context)
     {
         $setup->startSetup();
-        if (version_compare($context->getVersion(), '0.0.2', '<') && $setup->tableExists('learning_items')) {
+
+        if (version_compare($context->getVersion(), '0.0.2', '<')) {
             $this->addStatusColumn($setup);
         }
+
         $setup->endSetup();
     }
 
     private function addStatusColumn($setup)
     {
-        $connection = $setup->getConnection();
+        if (!$setup->tableExists('learning_items')) {
+            return;
+        }
 
         $column = [
             'type' => \Magento\Framework\DB\Ddl\Table::TYPE_SMALLINT,
@@ -29,6 +33,7 @@ class UpgradeSchema implements UpgradeSchemaInterface
             'default' => 0
         ];
 
+        $connection = $setup->getConnection();
         $connection->addColumn($setup->getTable('learning_items'), 'status', $column);
     }
 }

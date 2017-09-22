@@ -27,6 +27,6 @@ class UpgradeData implements UpgradeDataInterface
         }
 
         $connection = $setup->getConnection();
-        $connection->truncateTable($setup->getTableName('learning_items'));
+        $connection->truncateTable($setup->getTable('learning_items'));
     }
 }

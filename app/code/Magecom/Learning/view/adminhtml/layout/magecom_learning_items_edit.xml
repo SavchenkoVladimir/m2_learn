@@ -1,9 +1,9 @@
 <?xml version="1.0"?>
 <page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
-    <update handle="magecom_learning_items_grid_block"/>
+    <update handle="editor"/>
     <body>
         <referenceContainer name="content">
-            <block class="Magecom\Learning\Block\Adminhtml\Items" name="magecom.learning.items.grid.container"/>
+            <block class="Maxime\Jobs\Block\Adminhtml\Department\Edit" name="learning_items_edit"/>
         </referenceContainer>
     </body>
 </page>

@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="content">
+            <block class="Magecom\Learning\Block\Adminhtml\Items" name="adminhtml.block.learning.items.container">
+                <block class="Magecom\Learning\Block\Adminhtml\Items\Grid" name="adminhtml.block.learning.items.grid" as="grid"/>
+            </block>
+        </referenceContainer>
+    </body>
+</page>

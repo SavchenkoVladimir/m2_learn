@@ -4,5 +4,6 @@
         <add id="Magecom_Learning::magecom" title="Magecom" module="Magecom_Learning" sortOrder="80" resource="Magecom_Learning::learning" />
         <add id="Magecom_Learning::magecom_modules" title="Learning" module="Magecom_Learning" sortOrder="10" parent="Magecom_Learning::magecom" resource="Magecom_Learning::learning" />
         <add id="Magecom_Learning::magecom_learning_config" title="Config" module="Magento_Config" sortOrder="10" parent="Magecom_Learning::magecom_modules" action="adminhtml/system_config/edit/section/system/" resource="Magecom_Learning::learning" />
+        <add id="Magecom_Learning::magecom_learning_items" title="Items" module="Magecom_Learning" sortOrder="20" parent="Magecom_Learning::magecom_modules" action="magecom_learning/items/index/" resource="Magecom_Learning::learning" />
     </menu>
 </config>

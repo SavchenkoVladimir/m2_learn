@@ -2,11 +2,10 @@
 
 namespace Magecom\Learning\Controller\Adminhtml\Items;
 
-use Magento\Framework\Locale\Resolver;
-
 class Edit extends \Magecom\Learning\Controller\Adminhtml\Items
 {
     /**
+     * Edit Item
      * @return void
      */
     public function execute()
@@ -21,24 +20,9 @@ class Edit extends \Magecom\Learning\Controller\Adminhtml\Items
                 $this->_redirect('magecom_learning/*/');
                 return;
             }
-        } else {
-            $model->setInterfaceLocale(Resolver::DEFAULT_LOCALE);
         }
 
-//        // Restore previously entered form data from session
-//        $data = $this->_session->getUserData(true);
-//        if (!empty($data)) {
-//            $model->setData($data);
-//        }
-
-//        $this->_coreRegistry->register('permissions_user', $model);
-//
-//        if (isset($userId)) {
-//            $breadcrumb = __('Edit User');
-//        } else {
-//            $breadcrumb = __('New User');
-//        }
-//        $this->_initAction()->_addBreadcrumb($breadcrumb, $breadcrumb);
+        $this->coreRegistry->register('learning_items', $model);
 
         $this->_initAction();
         $this->_view->getPage()->getConfig()->getTitle()->prepend(__('Items'));

@@ -9,6 +9,10 @@ use Magento\Framework\Setup\ModuleDataSetupInterface;
 class UpgradeData implements UpgradeDataInterface
 {
 
+    /**
+     * @param ModuleDataSetupInterface $setup
+     * @param ModuleContextInterface $context
+     */
     public function upgrade(ModuleDataSetupInterface $setup, ModuleContextInterface $context)
     {
         $setup->startSetup();
@@ -20,6 +24,9 @@ class UpgradeData implements UpgradeDataInterface
         $setup->endSetup();
     }
 
+    /**
+     * @param $setup
+     */
     private function truncateItemsTable($setup)
     {
         if (!$setup->tableExists('learning_items')) {

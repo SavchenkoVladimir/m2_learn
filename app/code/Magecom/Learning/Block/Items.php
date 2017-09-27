@@ -8,6 +8,10 @@ class Items extends \Magento\Framework\View\Element\Template
 {
 
     protected $items = [];
+
+    /**
+     * @var \Magecom\Learning\Model\ItemsFactory
+     */
     public $itemsFactory;
 
     /**
@@ -55,5 +59,4 @@ class Items extends \Magento\Framework\View\Element\Template
 
         return $items['totalRecords'];
     }
-
 }

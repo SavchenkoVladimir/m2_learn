@@ -38,7 +38,9 @@ class Items extends \Magento\Backend\Block\Widget\Grid\Container
                 \Magento\Backend\Block\Widget\Container::PARAM_HEADER_TEXT => __('Items'),
             ]
         );
+
         parent::_construct();
+        $this->_addBackButton();
         $this->_addNewButton();
     }
 }

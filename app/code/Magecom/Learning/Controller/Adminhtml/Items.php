@@ -40,18 +40,6 @@ abstract class Items extends \Magento\Backend\App\AbstractAction
     protected function _initAction()
     {
         $this->_view->loadLayout();
-//        $this->_setActiveMenu(
-//            'Magento_User::system_acl_users'
-//        )->_addBreadcrumb(
-//            __('System'),
-//            __('System')
-//        )->_addBreadcrumb(
-//            __('Permissions'),
-//            __('Permissions')
-//        )->_addBreadcrumb(
-//            __('Users'),
-//            __('Users')
-//        );
 
         return $this;
     }

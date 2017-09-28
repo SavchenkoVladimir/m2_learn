@@ -17,7 +17,7 @@ class Index extends \Magento\Framework\App\Action\Action
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function execute()
     {

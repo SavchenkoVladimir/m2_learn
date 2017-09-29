@@ -5,13 +5,16 @@ namespace Magecom\Learning\Observer;
 use Magento\Framework\Event\Observer;
 use Magento\Framework\Event\ObserverInterface;
 
-class RawObserver implements ObserverInterface
+class TopMenuObserver implements ObserverInterface
 {
     /**
      * @var \Magento\Framework\UrlInterface
      */
     protected $urlBuilder;
 
+    /**
+     * @var \Magento\Framework\Data\Tree\NodeFactory
+     */
     protected $nodeFactory;
 
     /**
@@ -33,20 +36,19 @@ class RawObserver implements ObserverInterface
     public function execute(Observer $observer)
     {
         $menu = $observer->getMenu();
-        $tree = $menu->getTree();
 
-        $children = $tree->getNodes();
-        $clonedChildren = clone $children;
+        $menuLinks = $menu->getChildren();
+        $clonedMenuLinks = clone $menuLinks;
 
-        foreach($children as $child){
-            $tree->removeNode($child);
+        foreach($menuLinks as $menuLink) {
+            $menu->removeChild($menuLink);
         }
 
-        $node = $this->getAboutUsNode($observer);
-        $tree->addNode($node, $menu);
+        $aboutUsLink = $this->getAboutUsNode($observer);
+        $menu->addChild($aboutUsLink);
 
-        foreach($clonedChildren as $child){
-            $tree->appendChild($child, $menu);
+        foreach($clonedMenuLinks as $menuLink){
+            $menu->addChild($menuLink);
         }
     }
 
@@ -72,7 +74,7 @@ class RawObserver implements ObserverInterface
      */
     public function getIsLinkActive($observer)
     {
-        if (strpos($observer->getBlock()->getRequest()->getRequestUri(), '/about-us/')) {
+        if (strpos($observer->getBlock()->getRequest()->getRequestUri(), 'about-us')) {
             return true;
         }
 

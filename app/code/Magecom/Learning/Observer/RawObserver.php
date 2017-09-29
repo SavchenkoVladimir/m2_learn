@@ -12,14 +12,18 @@ class RawObserver implements ObserverInterface
      */
     protected $urlBuilder;
 
+    protected $nodeFactory;
+
     /**
      * RawObserver constructor.
      * @param \Magento\Framework\UrlInterface $urlBuilder
      */
     public function __construct(
-        \Magento\Framework\UrlInterface $urlBuilder
+        \Magento\Framework\UrlInterface $urlBuilder,
+        \Magento\Framework\Data\Tree\NodeFactory $nodeFactory
     ) {
         $this->urlBuilder = $urlBuilder;
+        $this->nodeFactory = $nodeFactory;
     }
 
     /**
@@ -28,14 +32,50 @@ class RawObserver implements ObserverInterface
      */
     public function execute(Observer $observer)
     {
-        $topMenu = $observer->getEvent()->getData('transportObject');
-        $topMenuHtml = $topMenu->getData('html');
+        $menu = $observer->getMenu();
+        $tree = $menu->getTree();
 
-        $aboutUsUrl = $this->urlBuilder->getUrl('about-us');
-        $aboutUsLink = '<li  class="level0 nav-0 first level-top"><a href="'
-                    . $aboutUsUrl
-                    . '"  class="level-top" ><span>About us</span></a></li>';
+        $children = $tree->getNodes();
+        $clonedChildren = clone $children;
 
-        $topMenu->setData(['html' => $aboutUsLink . $topMenuHtml]);
+        foreach($children as $child){
+            $tree->removeNode($child);
+        }
+
+        $node = $this->getAboutUsNode($observer);
+        $tree->addNode($node, $menu);
+
+        foreach($clonedChildren as $child){
+            $tree->appendChild($child, $menu);
+        }
+    }
+
+    /**
+     * @param $observer
+     * @return \Magento\Framework\Data\Tree\Node
+     */
+    public function getAboutUsNode($observer)
+    {
+        $data = [
+            'name'      => __('About us'),
+            'id'        => 'about-us-link',
+            'url'       => $this->urlBuilder->getUrl('about-us'),
+            'is_active' => $this->getIsLinkActive($observer)
+        ];
+
+        return $this->nodeFactory->create(['data' => $data, 'idField' => 'id', 'tree' => $observer->getMenu()->getTree()]);
+    }
+
+    /**
+     * @param $observer
+     * @return bool
+     */
+    public function getIsLinkActive($observer)
+    {
+        if (strpos($observer->getBlock()->getRequest()->getRequestUri(), '/about-us/')) {
+            return true;
+        }
+
+        return false;
     }
 }

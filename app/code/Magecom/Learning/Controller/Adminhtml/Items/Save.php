@@ -30,8 +30,8 @@ class Save extends \Magecom\Learning\Controller\Adminhtml\Items
                 }
 
                 return $resultRedirect->setPath('magecom_learning/*/');
-            } catch (\Zend_Exception $e) {
-                $this->messageManager->addError($e->getMessage());
+            } catch (\Zend_Validate_Exception $ze) {
+                $this->messageManager->addError($ze->getMessage());
             } catch (\Exception $e) {
                 $this->messageManager->addError(__('We can\'t save this item right now.'));
             }

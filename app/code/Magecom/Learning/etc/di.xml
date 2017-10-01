@@ -4,4 +4,11 @@
     <type name="Magento\Catalog\Model\Product">
         <plugin name="learning_change_product_name" type="Magecom\Learning\Plugin\ProductPlugin" />
     </type>
-</config>
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="magecom_learning_items_grid_data_source" xsi:type="string">Magecom\Learning\Model\ResourceModel\Items\Grid\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+ </config>

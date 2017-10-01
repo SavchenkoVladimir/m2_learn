@@ -12,6 +12,21 @@ class Items extends \Magento\Framework\Model\AbstractModel
     const CACHE_TAG = 'magecom_learning_items';
 
     /**
+     * Record status
+     */
+    const RECORD_STATUS_DISABLED = 0;
+
+    /**
+     * Record status
+     */
+    const RECORD_STATUS_ENABLED = 1;
+
+    /**
+     * Record status
+     */
+    const RECORD_STATUS_ARCHIVED = 2;
+
+    /**
      * @var \Magento\Framework\Exception\InputException
      */
     protected $inputException;
@@ -116,5 +131,21 @@ class Items extends \Magento\Framework\Model\AbstractModel
         }
 
         return $this;
+    }
+
+    /**
+     * Prepare item's statuses.
+     *
+     * @return array
+     */
+    public function getAvailableStatuses()
+    {
+        $statuses = [
+            self::RECORD_STATUS_ENABLED => __('Enabled'),
+            self::RECORD_STATUS_DISABLED => __('Disabled'),
+            self::RECORD_STATUS_ARCHIVED => __('Archive')
+        ];
+
+        return $statuses;
     }
 }

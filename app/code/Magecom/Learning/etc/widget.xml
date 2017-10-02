@@ -1,0 +1,13 @@
+<?xml	version="1.0"	encoding="UTF-8"?>
+<widgets xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Widget:etc/widget.xsd">
+    <widget	id="magecom_learning_widget" class="Magecom\Learning\Block\Widget\Custom" placeholder_image="Magento_Cms::images/widget_block.png">
+        <label translate="true">Magecom learning</label>
+        <description translate="true">Custom Widget</description>
+        <parameters>
+            <parameter name="param1" xsi:type="text" required="true" visible="true">
+                <label translate="true">Widget content</label>
+                <value>You can enter your content here to display it with widget.</value>
+            </parameter>
+        </parameters>
+    </widget>
+</widgets>

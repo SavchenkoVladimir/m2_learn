@@ -1,0 +1,48 @@
+<h1>Module: <?= $this->getModuleName(); ?></h1>
+<?php $items = $this->getAllItems(); ?>
+<h3>Action: index/cache</h3>
+<table>
+    <tr>
+        <th>id</th>
+        <th>title</th>
+        <th>content</th>
+        <th>creation time</th>
+        <th>status</th>
+    </tr>
+    <?php foreach($items as $item): ?>
+        <tr>
+            <td>
+                <?php if (array_key_exists('item_id', $item)) : ?>
+                    <?php echo $item['item_id']; ?>
+                <?php endif; ?>
+            </td>
+            <td>
+                <?php if (array_key_exists('title', $item)) : ?>
+                    <?php echo $item['title']; ?>
+                <?php endif; ?>
+            </td>
+            <td>
+                <?php if (array_key_exists('content', $item)) : ?>
+                    <?php echo $item['content']; ?>
+                <?php endif; ?>
+            </td>
+            <td>
+                <?php if (array_key_exists('creation_time', $item)) : ?>
+                    <?php echo $item['creation_time']; ?>
+                <?php endif; ?>
+            </td>
+            <td>
+                <?php if (array_key_exists('status', $item)) : ?>
+                    <?php echo $this->getStatusName($item['status']); ?>
+                <?php endif; ?>
+            </td>
+        </tr>
+    <?php endforeach; ?>
+    <tr>
+        <td>Items count:</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td><?= $this->getItemsCount() ?></td>
+    </tr>
+</table>

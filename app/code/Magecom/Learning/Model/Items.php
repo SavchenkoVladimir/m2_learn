@@ -52,7 +52,9 @@ class Items extends \Magento\Framework\Model\AbstractModel
         $collection = $this->getCollection()
             ->addFieldToSelect('item_id')
             ->addFieldToSelect('title')
-            ->addFieldToSelect('creation_time');
+            ->addFieldToSelect('content')
+            ->addFieldToSelect('creation_time')
+            ->addFieldToSelect('status');
 
         if ($limit) {
             $collection->setPageSize($limit);

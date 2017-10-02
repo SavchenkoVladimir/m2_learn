@@ -1,4 +1,14 @@
 <?xml version="1.0"?>
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
     <preference for="Magento\Catalog\Model\Product" type="Magecom\Learning\Model\Product" />
-</config>
+    <type name="Magento\Catalog\Model\Product">
+        <plugin name="learning_change_product_name" type="Magecom\Learning\Plugin\ProductPlugin" />
+    </type>
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="magecom_learning_items_grid_data_source" xsi:type="string">Magecom\Learning\Model\ResourceModel\Items\Grid\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+ </config>

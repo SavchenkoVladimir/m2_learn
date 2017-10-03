@@ -2,7 +2,7 @@
     <acl>
         <resources>
             <resource id="Magento_Backend::admin">
-                <resource id="Magecom_Learning::learning_items" title="Magecom_Learning" translate="title" sortOrder="30" />
+                <resource id="Magecom_Learning::learning" title="Magecom_Learning" translate="title" sortOrder="30" />
             </resource>
         </resources>
     </acl>

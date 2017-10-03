@@ -2,6 +2,6 @@
 <page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
     <update handle="1column"/>
     <referenceContainer name="content">
-        <block class="Magecom\Learning\Block\Display" name="magecom.learning.index.index" template="Magecom_Learning::index/index.phtml" />
+        <block class="Magecom\Learning\Block\Main" name="magecom.learning.index.index" template="Magecom_Learning::index/index.phtml" />
     </referenceContainer>
 </page>

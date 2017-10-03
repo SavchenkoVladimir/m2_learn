@@ -7,6 +7,9 @@ use \Magento\Framework\View\Element\Template\Context;
 class Items extends \Magento\Framework\View\Element\Template
 {
 
+    /**
+     * @var array
+     */
     protected $items = [];
 
     /**

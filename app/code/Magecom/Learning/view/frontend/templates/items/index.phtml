@@ -6,17 +6,29 @@
         <th>title</th>
         <th>creation time</th>
     </tr>
-    <?php foreach($items as $item): ?>
+    <?php foreach ($items as $item): ?>
         <tr>
-            <td><?= $item['item_id'] ?></td>
-            <td><?= $item['title'] ?></td>
-            <td><?= $item['creation_time'] ?></td>
+            <td>
+                <?php if (array_key_exists('item_id', $item)) :  ?>
+                    <?php echo $block->escapeHtml($item['item_id']); ?>
+                <?php endif; ?>
+            </td>
+            <td>
+                <?php if (array_key_exists('title', $item)) :  ?>
+                    <?php echo $block->escapeHtml($item['title']); ?>
+                <?php endif; ?>
+            </td>
+            <td>
+                <?php if (array_key_exists('creation_time', $item)) :  ?>
+                    <?php echo $block->escapeHtml($item['creation_time']); ?>
+                <?php endif; ?>
+            </td>
         </tr>
     <?php endforeach; ?>
     <tr>
         <td>Items count:</td>
         <td></td>
-        <td><?= $this->getItemsCount() ?></td>
+        <td><?php echo $block->escapeHtml($this->getItemsCount()); ?></td>
     </tr>
 </table>
 

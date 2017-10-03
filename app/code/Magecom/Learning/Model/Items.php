@@ -136,8 +136,6 @@ class Items extends \Magento\Framework\Model\AbstractModel
     }
 
     /**
-     * Prepare item's statuses.
-     *
      * @return array
      */
     public function getAvailableStatuses()

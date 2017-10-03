@@ -32,8 +32,8 @@ class InstallSchema implements InstallSchemaInterface
             'Title'
         )->addColumn(
             'content',
-            \Magento\Framework\DB\Ddl\Table::TYPE_VARBINARY,
-            '1m',
+            \Magento\Framework\DB\Ddl\Table::TYPE_TEXT,
+            '1M',
             ['nullable' => false],
             'Content'
         )->addColumn(

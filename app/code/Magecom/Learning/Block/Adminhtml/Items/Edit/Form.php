@@ -11,7 +11,6 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic
     protected $formKey;
 
     /**
-     * Form constructor.
      * @param \Magento\Backend\Block\Template\Context $context
      * @param \Magento\Framework\Registry $registry
      * @param \Magento\Framework\Data\FormFactory $formFactory
@@ -29,8 +28,6 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic
     }
 
     /**
-     * Init class
-     *
      * @return void
      */
     protected function _construct()

@@ -9,7 +9,7 @@ class Cache extends \Magecom\Learning\Block\Items
 
     const CACHE_ID = 'LEARNING_CACHE_ID';
 
-    const CACHE_LIFETIME = 86400;
+    const CACHE_LIFETIME = 3600;
 
     const RECORD_STATUS_DISABLED = 0;
 
@@ -47,7 +47,7 @@ class Cache extends \Magecom\Learning\Block\Items
     {
         $items = $this->getCachedItems();
 
-        return $items ? $items : $this->getDbItems();
+        return $items ?: $this->getDbItems();
     }
 
     /**

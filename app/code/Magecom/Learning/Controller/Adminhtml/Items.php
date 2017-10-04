@@ -6,15 +6,11 @@ abstract class Items extends \Magento\Backend\App\AbstractAction
 {
 
     /**
-     * Core registry
-     *
      * @var \Magento\Framework\Registry
      */
     protected $coreRegistry;
 
     /**
-     * User model factory
-     *
      * @var \Magecom\Learning\Model\ItemsFactory
      */
     protected $itemsFactory;

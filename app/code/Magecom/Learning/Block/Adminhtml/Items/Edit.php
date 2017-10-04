@@ -5,11 +5,9 @@ namespace Magecom\Learning\Block\Adminhtml\Items;
 class Edit extends \Magento\Backend\Block\Widget\Form\Container
 {
     /**
-     * Core registry
-     *
      * @var \Magento\Framework\Registry
      */
-    protected $_coreRegistry = null;
+    protected $coreRegistry = null;
 
     /**
      * @param \Magento\Backend\Block\Widget\Context $context
@@ -21,13 +19,11 @@ class Edit extends \Magento\Backend\Block\Widget\Form\Container
         \Magento\Framework\Registry $registry,
         array $data = []
     ) {
-        $this->_coreRegistry = $registry;
+        $this->coreRegistry = $registry;
         parent::__construct($context, $data);
     }
 
     /**
-     * Init class
-     *
      * @return void
      */
     protected function _construct()

@@ -14,6 +14,9 @@ use Magecom\Learning\Model\ResourceModel\Items;
  */
 class Collection extends ItemsCollection implements SearchResultInterface
 {
+
+    protected $aggregations;
+
     /**
      * @inheritdoc
      */

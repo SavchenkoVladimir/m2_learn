@@ -7,9 +7,6 @@ use Magento\Framework\View\Element\UiComponent\ContextInterface;
 use Magento\Framework\View\Element\UiComponentFactory;
 use Magento\Ui\Component\Listing\Columns\Column;
 
-/**
- * Class ViewAction
- */
 class Actions extends Column
 {
     /**
@@ -18,8 +15,6 @@ class Actions extends Column
     protected $urlBuilder;
 
     /**
-     * Constructor
-     *
      * @param ContextInterface $context
      * @param UiComponentFactory $uiComponentFactory
      * @param UrlInterface $urlBuilder
@@ -38,8 +33,6 @@ class Actions extends Column
     }
 
     /**
-     * Prepare Data Source
-     *
      * @param array $dataSource
      * @return array
      */

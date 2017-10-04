@@ -8,9 +8,7 @@ use Magento\Framework\Controller\ResultFactory;
 class Delete extends \Magecom\Learning\Controller\Adminhtml\Items
 {
     /**
-     * Delete an Item
-     *
-     * @return \Magento\Backend\Model\View\Result\Redirect|void
+     * @return $this|\Magento\Backend\Model\View\Result\Redirect
      */
     public function execute()
     {

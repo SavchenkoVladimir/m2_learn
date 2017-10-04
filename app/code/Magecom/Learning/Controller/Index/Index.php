@@ -13,7 +13,6 @@ class Index extends \Magento\Framework\App\Action\Action
     protected $logger;
 
     /**
-     * Index constructor.
      * @param Context $context
      */
     public function __construct(

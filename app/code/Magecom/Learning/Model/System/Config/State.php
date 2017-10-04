@@ -1,13 +1,10 @@
 <?php
 
-namespace Magecom\Learning\Model\Items\Source;
+namespace Magecom\Learning\Model\System\Config;
 
 use Magento\Framework\Data\OptionSourceInterface;
 
-/**
- * Class IsActive
- */
-class IsActive implements OptionSourceInterface
+class State implements OptionSourceInterface
 {
     /**
      * @var \Magecom\Learning\Model\Items
@@ -15,9 +12,7 @@ class IsActive implements OptionSourceInterface
     protected $items;
 
     /**
-     * IsActive constructor.
      * @param \Magecom\Learning\Model\Items $items
-     *
      */
     public function __construct(\Magecom\Learning\Model\Items $items)
     {
@@ -25,7 +20,6 @@ class IsActive implements OptionSourceInterface
     }
 
     /**
-     * Get options
      * @return array
      */
     public function toOptionArray()
@@ -41,3 +35,4 @@ class IsActive implements OptionSourceInterface
         return $options;
     }
 }
+

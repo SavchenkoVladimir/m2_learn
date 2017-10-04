@@ -18,7 +18,6 @@ class Items extends \Magento\Framework\View\Element\Template
     public $itemsFactory;
 
     /**
-     * Items constructor.
      * @param Context $context
      * @param \Magecom\Learning\Model\ItemsFactory $itemsFactory
      */

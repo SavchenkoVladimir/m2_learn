@@ -3,7 +3,7 @@
     <module name="Magecom_Learning" setup_version="0.0.3">
         <sequence>
             <module name="Magento_Theme"/>
-            <!--<module name="Magento_Catalog"/>-->
+            <module name="Magento_Catalog"/>
         </sequence>
     </module>
 </config>

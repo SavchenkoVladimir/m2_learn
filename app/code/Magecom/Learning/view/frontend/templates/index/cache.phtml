@@ -1,4 +1,4 @@
-<h1>Module: <?= $this->getModuleName(); ?></h1>
+<h1>Module: <?php echo $this->getModuleName(); ?></h1>
 <?php $items = $this->getAllItems(); ?>
 <h3>Action: index/cache</h3>
 <table>
@@ -43,6 +43,6 @@
         <td></td>
         <td></td>
         <td></td>
-        <td><?= $this->getItemsCount() ?></td>
+        <td><?php echo $this->getItemsCount() ?></td>
     </tr>
 </table>

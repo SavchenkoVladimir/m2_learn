@@ -62,7 +62,7 @@ class Cache extends \Magecom\Learning\Block\Items
             static::RECORD_STATUS_ARCHIVED => 'Archived'
         ];
 
-        return array_key_exists($status, $statuses) ? $statuses[$status] : '';
+        return !array_key_exists($status, $statuses) ?: $statuses[$status];
     }
 
     /**

@@ -11,4 +11,7 @@
             </argument>
         </arguments>
     </type>
+    <type name="Magento\Catalog\Model\Product">
+        <plugin name="learning_change_product_name" type="Magecom\Learning\Plugin\ProductPlugin" />
+    </type>
 </config>

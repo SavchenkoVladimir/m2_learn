@@ -72,10 +72,6 @@ class TopmenuPlugin
      */
     public function getIsLinkActive($subject)
     {
-        if (strpos($subject->getRequest()->getRequestUri(), static::PAGE_URL_KEY)) {
-            return true;
-        }
-
-        return false;
+        return (bool)(strpos($subject->getRequest()->getRequestUri(), static::PAGE_URL_KEY));
     }
 }

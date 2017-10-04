@@ -4,6 +4,9 @@
     <type name="Magento\Catalog\Model\Product">
         <plugin name="learning_change_product_name" type="Magecom\Learning\Plugin\ProductPlugin" />
     </type>
+    <type name="Magento\Theme\Block\Html\Topmenu">
+        <plugin name="learning_change_topmenu" type="Magecom\Learning\Plugin\TopmenuPlugin" sortOrder="-1"/>
+    </type>
     <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
         <arguments>
             <argument name="collections" xsi:type="array">

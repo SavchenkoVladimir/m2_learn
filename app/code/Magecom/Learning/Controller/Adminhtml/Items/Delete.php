@@ -8,39 +8,42 @@ use Magento\Framework\Controller\ResultFactory;
 class Delete extends \Magecom\Learning\Controller\Adminhtml\Items
 {
     /**
-     * @return $this|\Magento\Backend\Model\View\Result\Redirect
+     * @return \Magento\Framework\Controller\ResultInterface
      */
     public function execute()
     {
         $itemId = $this->getRequest()->getParam('item_id');
+
         if ($itemId) {
-            /** @var \Magento\Backend\Model\View\Result\Redirect $resultRedirect */
             $resultRedirect = $this->resultFactory->create(ResultFactory::TYPE_REDIRECT);
-            try {
-                $model = $this->itemsFactory->create();
-                $model->load($itemId)->delete();
-                $this->messageManager->addSuccess(__('You deleted the item.'));
-
-                return $resultRedirect->setPath("*/*/");
-            } catch (NoSuchEntityException $e) {
-                $this->messageManager->addError(
-                    __('We can\'t delete this item because of an incorrect rate ID.')
-                );
-
-                return $resultRedirect->setPath("magecom_learning/*/");
-            } catch (\Magento\Framework\Exception\LocalizedException $e) {
-                $this->messageManager->addError($e->getMessage());
-            } catch (\Exception $e) {
-                $this->messageManager->addError(__('Something went wrong deleting this Item.'));
-            }
-
-            if ($this->getRequest()->getServer('HTTP_REFERER')) {
-                $resultRedirect->setRefererUrl();
-            } else {
-                $resultRedirect->setPath("*/*/");
-            }
+            $this->removeItem($itemId, $resultRedirect);
+            $resultRedirect->setPath("*/*/");
 
             return $resultRedirect;
+        }
+    }
+
+    /**
+     * @param $itemId
+     * @param $resultRedirect
+     * @return mixed
+     * @throws \Exception
+     */
+    protected function removeItem($itemId, $resultRedirect)
+    {
+        try {
+            $this->itemsModel->load($itemId)->delete();
+            $this->messageManager->addSuccessMessage(__('You deleted the item.'));
+
+            return $resultRedirect->setPath("*/*/");
+        } catch (NoSuchEntityException $e) {
+            $this->messageManager->addErrorMessage(
+                __('We can\'t delete this item because of an incorrect rate ID.')
+            );
+
+            return $resultRedirect->setPath("magecom_learning/*/");
+        } catch (\Exception $e) {
+            $this->messageManager->addErrorMessage(__('Something went wrong deleting this Item.'));
         }
     }
 }

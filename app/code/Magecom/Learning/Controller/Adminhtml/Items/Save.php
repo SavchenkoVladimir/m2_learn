@@ -3,6 +3,7 @@
 namespace Magecom\Learning\Controller\Adminhtml\Items;
 
 use Magento\Framework\Controller\ResultFactory;
+use Magento\Framework\Exception\InputException;
 
 class Save extends \Magecom\Learning\Controller\Adminhtml\Items
 {
@@ -18,22 +19,22 @@ class Save extends \Magecom\Learning\Controller\Adminhtml\Items
 
         if ($postData) {
             try {
-                $model = $this->itemsFactory->create();
-                $model->populateData($postData);
-                $model->validate();
-                $item = $model->save();
 
-                $this->messageManager->addSuccess(__('You saved the item.'));
+                $this->itemsModel->populateData($postData);
+                $this->itemsModel->validate();
+                $item = $this->itemsModel->save();
+
+                $this->messageManager->addSuccessMessage(__('You saved the item.'));
 
                 if ($this->getRequest()->getParam('back')) {
-                    return $resultRedirect->setPath('magecom_learning/*/edit', ['rule' => $item->getId()]);
+                    return $resultRedirect->setPath('magecom_learning/*/edit', ['item_id' => $item->getId()]);
                 }
 
                 return $resultRedirect->setPath('magecom_learning/*/');
-            } catch (\Zend_Validate_Exception $ze) {
-                $this->messageManager->addError($ze->getMessage());
+            } catch (InputException $e) {
+                $this->messageManager->addErrorMessage($e->getMessage());
             } catch (\Exception $e) {
-                $this->messageManager->addError(__('We can\'t save this item right now.'));
+                $this->messageManager->addErrorMessage(__('We can\'t save this item right now.'));
             }
 
             $this->_objectManager->get('Magento\Backend\Model\Session')->setRuleData($postData);

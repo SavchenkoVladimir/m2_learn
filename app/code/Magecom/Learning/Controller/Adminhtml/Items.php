@@ -11,23 +11,23 @@ abstract class Items extends \Magento\Backend\App\AbstractAction
     protected $coreRegistry;
 
     /**
-     * @var \Magecom\Learning\Model\ItemsFactory
+     * @var \Magecom\Learning\Api\Data\ItemsInterface
      */
-    protected $itemsFactory;
+    protected $itemsModel;
 
     /**
      * @param \Magento\Backend\App\Action\Context $context
      * @param \Magento\Framework\Registry $coreRegistry
-     * @param \Magecom\Learning\Model\ItemsFactory $itemsFactory
+     * @param \Magecom\Learning\Api\Data\ItemsInterface $itemsModel
      */
     public function __construct(
         \Magento\Backend\App\Action\Context $context,
         \Magento\Framework\Registry $coreRegistry,
-        \Magecom\Learning\Model\ItemsFactory $itemsFactory
+        \Magecom\Learning\Api\Data\ItemsInterface $itemsModel
     ) {
         parent::__construct($context);
         $this->coreRegistry = $coreRegistry;
-        $this->itemsFactory = $itemsFactory;
+        $this->itemsModel = $itemsModel;
     }
 
     /**

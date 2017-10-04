@@ -4,7 +4,7 @@ namespace Magecom\Learning\Model;
 
 use Magento\Framework\Exception\InputException;
 
-class Items extends \Magento\Framework\Model\AbstractModel
+class Items extends \Magento\Framework\Model\AbstractModel implements \Magecom\Learning\Api\Data\ItemsInterface
 {
     /**
      * @inheritdoc

@@ -1,8 +1,4 @@
 <?xml version="1.0"?>
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Catalog:etc/product_types.xsd">
-    <type name="learning_product_type" label="Learning Product" modelInstance="Magecom\Learning\Model\Product\Type" sortOrder="70" >
-        <composableTypes>
-            <type name="learning_product_type_code" />
-        </composableTypes>
-    </type>
+    <type name="learning_product_type" label="Learning Product" modelInstance="Magecom\Learning\Model\Product\Type" sortOrder="70" />
 </config>

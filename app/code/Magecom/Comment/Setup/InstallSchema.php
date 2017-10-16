@@ -26,16 +26,19 @@ class InstallSchema implements InstallSchemaInterface
             'Entity ID'
         )->addColumn(
             'order_increment_id',
-            \Magento\Framework\DB\Ddl\Table::TYPE_SMALLINT,
-            null,
-            ['nullable' => false],
-            'Order id'
+            \Magento\Framework\DB\Ddl\Table::TYPE_TEXT,
+            50,
+            [],
+            'Order increment Id'
         )->addColumn(
             'comment',
             \Magento\Framework\DB\Ddl\Table::TYPE_TEXT,
             null,
             ['nullable' => false],
             'Comment'
+        )->addIndex(
+            $setup->getIdxName('checkout_comments', ['order_increment_id']),
+            ['order_increment_id']
         );
 
         $installer->getConnection()->createTable($table);

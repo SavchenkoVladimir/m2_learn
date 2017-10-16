@@ -4,7 +4,8 @@ define(
         'Magento_Checkout/js/model/url-builder',
         'Magento_Customer/js/model/customer',
         'Magento_Checkout/js/model/place-order',
-        'Magecom_Comment/js/view/comment-checkout-form'
+        'Magecom_Comment/js/view/comment-checkout-form',
+        'uiRegistry'
     ],
     function (quote, urlBuilder, customer, placeOrderService, CommentForm) {
         'use strict';

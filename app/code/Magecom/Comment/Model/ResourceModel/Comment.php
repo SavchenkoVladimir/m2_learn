@@ -10,6 +10,6 @@ class Comment extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb
      */
     protected function _construct()
     {
-        $this->_init('checkout_comments', 'comment_id');
+        $this->_init('checkout_comments', 'entity_id');
     }
 }

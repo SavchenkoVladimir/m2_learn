@@ -1,0 +1,14 @@
+<section class="admin__page-section order-view-billing-shipping">
+    <div class="admin__page-section-title">
+        <span class="title"><?php echo __('Checkout comment'); ?></span>
+    </div>
+    <div class="admin__page-section-content">
+        <div class="admin__page-section-item order-payment-method">
+            <div class="admin__page-section-item-content">
+                <div class="order-payment-currency">
+                    <?php echo $block->escapeHtml($block->getCheckoutMessage()); ?>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

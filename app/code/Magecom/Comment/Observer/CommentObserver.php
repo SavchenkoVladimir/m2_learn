@@ -4,6 +4,7 @@ namespace Magecom\Comment\Observer;
 
 use Magento\Framework\Event\Observer;
 use Magento\Framework\Event\ObserverInterface;
+use Zend\Json\Server\Exception\ErrorException;
 
 class CommentObserver implements ObserverInterface
 {
@@ -13,30 +14,52 @@ class CommentObserver implements ObserverInterface
     protected $request;
 
     /**
+     * @var \Magecom\Comment\Model\ResourceModel\Comment
+     */
+    protected $commentModel;
+
+    /**
+     * @var \Psr\Log\LoggerInterface
+     */
+    protected $logger;
+
+    /**
      * CommentObserver constructor.
      * @param \Magento\Framework\Webapi\Rest\Request $request
+     * @param \Magecom\Comment\Model\Comment $commentModel
+     * @param \Psr\Log\LoggerInterface $logger
      */
     public function __construct(
-        \Magento\Framework\Webapi\Rest\Request $request
+        \Magento\Framework\Webapi\Rest\Request $request,
+        \Magecom\Comment\Model\Comment $commentModel,
+        \Psr\Log\LoggerInterface $logger
     ) {
         $this->request = $request;
+        $this->commentModel = $commentModel;
+        $this->logger = $logger;
     }
 
     /**
      * @param Observer $observer
-     * @return void
+     * @return Observer
      */
     public function execute(Observer $observer)
     {
-        $order = $observer->getOrder();
-        $methods = get_class_methods($order);
-        $orderIncrementId = $order->getIncrementId();
-        $attributes = $order->getExtensionAttributes();
+        try {
+            $order = $observer->getOrder();
+            $requestBody = $this->request->getBodyParams();
 
-        $params = $this->request->getParams();
-        $bodyParams = $this->request->getBodyParams()->checkoutComment;
-        $inputData = $this->request->getRequestData();
+            $record = [
+                'order_increment_id' => $order->getIncrementId(),
+                'comment' => $requestBody['checkoutComment']
+            ];
 
-        return $observer;
+            $this->commentModel->setData($record);
+            $this->commentModel->save();
+        } catch (ErrorException $e) {
+            $this->logger->error($e->getMessage());
+        } finally {
+            return $observer;
+        }
     }
 }

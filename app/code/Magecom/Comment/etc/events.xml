@@ -3,4 +3,10 @@
     <event name="sales_order_place_after">
         <observer name="checkoutComment" instance="\Magecom\Comment\Observer\CommentObserver" />
     </event>
+    <event name="email_order_set_template_vars_before">
+        <observer name="checkoutCommentSalesTemplate" instance="\Magecom\Comment\Observer\SalesEmailTemplateObserver" />
+    </event>
+    <!--<event name="sales_order_save_after">-->
+        <!--<observer name="checkoutCommentSendAdmin" instance="\Magecom\Comment\Observer\CheckoutCommentSendAdminObserver" />-->
+    <!--</event>-->
 </config>

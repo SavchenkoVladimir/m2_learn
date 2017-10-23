@@ -4,7 +4,7 @@ namespace Magecom\Comment\Model\Order\Email;
 
 use Magento\Sales\Model\Order;
 
-class Sender
+class Sender implements \Magecom\Comment\Api\EmailSenderInterface
 {
     /**
      * Email template id
@@ -111,6 +111,10 @@ class Sender
         return false;
     }
 
+    /**
+     * @param \Magento\Sales\Model\Order $order
+     * @return bool
+     */
     protected function checkAndSend(Order $order)
     {
         $this->identityContainer->setStore($order->getStore());
@@ -127,7 +131,7 @@ class Sender
     }
 
     /**
-     * @param Order $order
+     * @param \Magento\Sales\Model\Order $order
      * @return void
      */
     protected function prepareTemplate(Order $order)
@@ -146,7 +150,6 @@ class Sender
         $this->templateContainer->setTemplateVars($transport->getData());
         $this->templateContainer->setTemplateOptions($this->getTemplateOptions());
 
-        $this->identityContainer->setCustomerName($this->getAdminName());
         $this->identityContainer->setCustomerEmail($this->getAdminEmail());
         $this->templateContainer->setTemplateId(self::EMAIL_TEMPLATE_ID);
     }
@@ -208,7 +211,7 @@ class Sender
     }
 
     /**
-     * @return string
+     * @return string $email
      */
     protected function getAdminEmail()
     {
@@ -218,8 +221,8 @@ class Sender
     }
 
     /**
-     * @param $order
-     * @return string
+     * @param object $order
+     * @return string $link
      */
     protected function getOrderLink($order)
     {

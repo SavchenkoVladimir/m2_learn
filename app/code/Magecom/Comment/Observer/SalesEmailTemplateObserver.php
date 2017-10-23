@@ -23,14 +23,14 @@ class SalesEmailTemplateObserver implements ObserverInterface
      */
     public function __construct(
         \Magecom\Comment\Model\Comment $commentModel,
-        \Magecom\Comment\Model\Order\Email\Sender $emailSender
+        \Magecom\Comment\Api\EmailSenderInterface $emailSender
     ) {
         $this->commentModel = $commentModel;
         $this->emailSender = $emailSender;
     }
 
     /**
-     * @param Observer $observer
+     * @param \Magento\Framework\Event\Observer $observer
      * @return Observer
      */
     public function execute(Observer $observer)

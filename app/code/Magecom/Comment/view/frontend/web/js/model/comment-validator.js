@@ -1,9 +1,8 @@
 define(
     [
-        'Magecom_Comment/js/view/comment-checkout-form',
-        'uiRegistry'
+        'Magecom_Comment/js/view/comment-checkout-form'
     ],
-    function (CommentForm, registry) {
+    function (CommentForm) {
         'use strict';
         return {
 
